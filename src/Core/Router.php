@@ -12,7 +12,7 @@ class Router {
                 (new EtudiantController())->list();
                 break;
             default:
-                echo "Page non trouvée.";
+                include __DIR__ . '/../View/home.php';
         }
     }
 }
