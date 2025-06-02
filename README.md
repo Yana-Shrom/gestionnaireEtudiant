@@ -1,5 +1,5 @@
 lancer un serveur PHP avec : 
 
 ```bash
-php localhost:4000 -t public
+php -S localhost:4000 -t public
 ```
