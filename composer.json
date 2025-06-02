@@ -1,0 +1,14 @@
+{
+    "name": "manager/student",
+    "autoload": {
+        "psr-4": {
+            "Manager\\Student\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cédric Leméne"
+        }
+    ],
+    "require": {}
+}
