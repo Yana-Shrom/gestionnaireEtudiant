@@ -1,21 +1,29 @@
 <?php
 namespace App\Model;
 
-class Etudiant extends Personne{
-    private string $ine;
+class Etudiant extends Personne {
+    private array $notes = [];
 
-    public function __construct(string $nom, string $prenom, string $email) {
-        $this->ine = "";
-        for ($i=0; $i<11; $i++) {
-            rand(0, 1) === 0 ? $this->ine .= rand(0, 9) : $this->ine .= chr(rand(65, 90));
-        }
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->email = $email;
+    public function ajouterNote(Note $note) {
+        $this->notes[] = $note;
     }
 
-    public function getINE(): string {
-        return $this->ine;
-    } 
+    public function getNotes(): array {
+        return $this->notes;
+    }
 
+    public function calculerMoyenne(): float {
+        if (empty($this->notes)) return 0;
+        $total = array_reduce($this->notes, fn($carry, $note) => $carry + $note->getValeur(), 0);
+        return $total / count($this->notes);
+    }
+
+    public function afficherInformations() {
+        echo "Nom: {$this->nom}, Prénom: {$this->prenom}<br>";
+        echo "Notes: ";
+        foreach ($this->notes as $note) {
+            echo $note->getValeur() . " ";
+        }
+        echo "<br>Moyenne: " . $this->calculerMoyenne() . "<br>";
+    }
 }

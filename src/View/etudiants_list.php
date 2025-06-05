@@ -1,6 +1,16 @@
-<h1>Liste des étudiants</h1>
-<ul>
-<?php foreach ($etudiants as $etudiant): ?>
-    <li><?= $etudiant->getINE() ."-".  htmlspecialchars($etudiant->getNom()) ?> (<?= htmlspecialchars($etudiant->getEmail()) ?>)</li>
-<?php endforeach; ?>
-</ul>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste Étudiants</title>
+</head>
+<body>
+    <h1>Étudiants</h1>
+    <?php foreach ($etudiants as $etudiant): ?>
+        <div>
+            <?php $etudiant->afficherInformations(); ?>
+        </div>
+    <?php endforeach; ?>
+    <a href="?">Retour</a>
+</body>
+</html>

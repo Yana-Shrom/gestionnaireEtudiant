@@ -11,6 +11,9 @@ class Router {
             case 'list_etudiants':
                 (new EtudiantController())->list();
                 break;
+            case 'ajout_etudiant':
+                (new EtudiantController())->ajouter($_POST);
+                break;
             default:
                 include __DIR__ . '/../View/home.php';
         }
